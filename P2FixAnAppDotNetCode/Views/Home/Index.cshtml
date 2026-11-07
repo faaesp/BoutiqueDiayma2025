@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Product>
+﻿@using P2FixAnAppDotNetCode.Models
+@model IEnumerable<Product>
 @{
   ViewData["Title"] = "Product List";
 }
@@ -28,7 +29,7 @@
           <td>@p.Name</td>
           <td>@p.Description</td>
           <td>@p.Price</td>
-          <td>@p.Quantity</td>
+          <td>@p.Stock</td>
         </tr>
       }
     </tbody>

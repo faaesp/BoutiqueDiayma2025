@@ -8,9 +8,9 @@ namespace P2FixAnAppDotNetCode.Models.Services
     /// </summary>
     public class OrderService : IOrderService
     {
-       private readonly ICart _cart;
-       private readonly IOrderRepository _repository;
-       private readonly IProductService _productService;
+        private readonly ICart _cart;
+        private readonly IOrderRepository _repository;
+        private readonly IProductService _productService;
 
         public OrderService(ICart cart, IOrderRepository orderRepo, IProductService productService)
         {
@@ -24,8 +24,10 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         public void SaveOrder(Order order)
         {
-            order.Date = DateTime.Now;
+            // 1. Sauvegarder la commande via _repository
             _repository.Save(order);
+
+            // 2. Mettre à jour les stocks et vider le panier
             UpdateInventory();
         }
 

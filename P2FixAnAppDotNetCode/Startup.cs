@@ -34,12 +34,11 @@ namespace P2FixAnAppDotNetCode
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddMemoryCache();
             services.AddSession();
-            services.AddMvc()
-                .AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization();
-
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+    .AddViewLocalization(
+        LanguageViewLocationExpanderFormat.Suffix,
+        opts => { opts.ResourcesPath = "Resources"; })
+    .AddDataAnnotationsLocalization();
             services.Configure<RequestLocalizationOptions>(opts =>
             { 
                 var supportedCultures = new List<CultureInfo>
